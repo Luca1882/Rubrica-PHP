@@ -1,0 +1,16 @@
+# Config con credenziali
+config/database.php
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Composer
+vendor/
+
+# Upload utenti
+public/uploads/*
+!public/uploads/.gitkeep
+
+# IDE
+.vscode/
