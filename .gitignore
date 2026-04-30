@@ -1,6 +1,3 @@
-# Config con credenziali
-config/database.php
-
 # Windows
 Thumbs.db
 Desktop.ini
@@ -14,3 +11,6 @@ public/uploads/*
 
 # IDE
 .vscode/
+
+# .env
+.env
