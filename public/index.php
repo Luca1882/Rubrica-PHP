@@ -2,6 +2,24 @@
 // LOGICA PHP
 require_once "../config/database.php";
 
+// Lettura dell' ID e successive validazioni
+$contattoSelezionato = null;
+
+try {
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) { // Se id esiste ed è valore numerico(per avere maggiore controllo sulla validazione)
+        $stmt = $pdo->prepare("SELECT * FROM `contatti` WHERE id=:id");
+        $stmt->execute([
+            ':id' => $_GET['id']
+        ]);
+
+        $contattoSelezionato = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+} catch (PDOException $e) {
+    echo "Il contatto selezionato non esiste";
+}
+
+
+
 // Preparazione ed esecuzione query per mostrare dati di CONTATTI
 try {
     $stmt = $pdo->prepare("SELECT * FROM `contatti`");
@@ -54,7 +72,14 @@ try {
                 </div>
             </div>
             <div class="col-8 text-center">
-                <p class="text-muted">Inserimento dei dati di dettaglio del contatto</p>
+                <?php if ($contattoSelezionato): ?>
+                    <!--Mostro i dettagli del contatto-->
+                    <h3><?= $contattoSelezionato['nome'] ?> <?= $contattoSelezionato['cognome'] ?></h3>
+                    <h4><?= $contattoSelezionato['email'] ?></h4>
+                    <h5><?= $contattoSelezionato['telefono'] ?></h5>
+                <?php else: ?>
+                    <p class="text-muted">Inserimento dei dati di dettaglio del contatto</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
