@@ -77,12 +77,18 @@ try {
                     <h3><?= $contattoSelezionato['nome'] ?> <?= $contattoSelezionato['cognome'] ?></h3>
                     <h4><?= $contattoSelezionato['email'] ?></h4>
                     <h5><?= $contattoSelezionato['telefono'] ?></h5>
+
+                    <div>
+                        <a href="edit.php?id=<?= $contattoSelezionato['id'] ?>" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                        <a href="delete.php?id=<?= $contattoSelezionato['id'] ?>"
+                            onclick="return confirm ('Sei sicuro di voler eliminare il contatto ?')"
+                            class="btn btn-danger mx-2"><i class="bi bi-trash"></i>
+                            Cestina
+                        </a>
+                    </div>
                 <?php else: ?>
                     <p class="text-muted">Inserimento dei dati di dettaglio del contatto</p>
                 <?php endif; ?>
-                <div>
-                    <a href="edit.php?id=<?= $contattoSelezionato['id'] ?>" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
-                </div>
             </div>
         </div>
     </div>
