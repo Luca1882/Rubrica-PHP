@@ -80,6 +80,9 @@ try {
                 <?php else: ?>
                     <p class="text-muted">Inserimento dei dati di dettaglio del contatto</p>
                 <?php endif; ?>
+                <div>
+                    <a href="edit.php?id=<?= $contattoSelezionato['id'] ?>" class="btn btn-warning"><i class="bi bi-pencil"></i> Edit</a>
+                </div>
             </div>
         </div>
     </div>
