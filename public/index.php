@@ -40,20 +40,24 @@ try {
     </nav>
 
     <div class="container mt-4">
-        <?php
-        foreach ($contatti as $contatto) {
-            echo "{$contatto['nome']} {$contatto['cognome']}";
-        }
-        ?>
-        <div>
-            <a href="create.php" class="btn btn-primary"><i class="bi bi-person-add"></i>Add</a>
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-3">
+                    <a href="create.php" class="btn btn-primary"><i class="bi bi-person-add"></i> Add</a>
+                </div>
+                <div class="list-group">
+                    <?php foreach ($contatti as $contatto): ?>
+                        <a href="index.php?id=<?= $contatto['id'] ?>" class="list-group-item list-group-item-action">
+                            <?= $contatto['nome'] ?> <?= $contatto['cognome'] ?>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="col-8 text-center">
+                <p class="text-muted">Inserimento dei dati di dettaglio del contatto</p>
+            </div>
         </div>
     </div>
-
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
